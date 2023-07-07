@@ -1,0 +1,6 @@
+{
+    "icons": [
+		"folder",
+		"quote-right"
+	]
+}

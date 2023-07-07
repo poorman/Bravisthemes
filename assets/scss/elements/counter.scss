@@ -1,0 +1,137 @@
+/*--------------------------------------------------------------
+# counter
+--------------------------------------------------------------*/
+
+.pxl-counter1 {
+	position: relative;
+	.pxl--item-inner {
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+	.pxl--counter-container {
+		display: flex;
+		flex-direction: column;
+	}
+	.pxl--counter-number {
+		position: relative;
+		padding-bottom: 5px;
+	}
+	.pxl--item-title {
+		font-family: 'mulish';
+		font-style: normal;
+		font-weight: 500;
+		font-size: 17px;
+		line-height: 1.64705;
+		margin-bottom: 0;
+		color: $fourth_color;
+	}
+	&.style1 {
+		.pxl-item--icon {
+			width: 78px;
+			height: 78px;
+			line-height: 78px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: $primary_color;
+			border-radius: 50%;
+			margin-right: 17px;
+			i {
+				font-size: 39px;
+				color: $secondary_color;
+				line-height: 1;
+			}
+		}
+		.pxl--counter-prefix, .pxl--counter-value, .pxl--counter-suffix {
+			display: inline-block;
+			font-size: 44px;
+			line-height: 1.22727;
+			font-weight: 800;
+			color: $fourth_color;
+			font-family: 'nunito sans';
+			@media #{$max-md} {
+				font-size: 60px;
+			}
+			@media #{$max-sm} {
+				font-size: 50px;
+			}
+		}
+	}
+	&.style2 {
+		.pxl--counter-number {
+			padding-bottom: 0;
+		}
+		.pxl--item-inner {
+			background: rgba(255, 255, 255, 0.1);
+			border: 1px solid rgba(255, 255, 255, 0.8);
+			backdrop-filter: blur(5px);
+			border-radius: 10px;
+			padding: 35px 40px 34px 45px;
+			transition: all 0.5s ease-in;
+			&:hover {
+				background-color: $primary_color;
+				border-color: $primary_color;
+			}
+		}
+		.pxl-item--icon {
+			width: 63px;
+			height: 63px;
+			line-height: 63px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-right: 27px;
+			i {
+				font-size: 63px;
+				color: $fourth_color;
+				line-height: 1;
+			}
+		}
+		.pxl--counter-number {
+			display: flex;
+			align-items: center;
+		}
+		.pxl--counter-prefix, .pxl--counter-value {
+			display: inline-block;
+			font-weight: 700;
+			color: $fourth_color;
+			font-family: 'nunito sans';
+		}
+		.pxl--counter-prefix {
+			font-size: 44px;
+			line-height: 1.22727;
+			margin-right: 15px;
+			@media #{$max-sm} {
+				font-size: 35px;
+			}
+		}
+		.pxl--item-title {
+			font-family: 'Mulish';
+			font-style: normal;
+			font-weight: 700;
+			font-size: 18px;
+			line-height: 22px;
+		}
+		.pxl--counter-container {
+			min-width: 173px;				
+		}
+		.pxl--counter-value {
+			font-size: 44px;
+			line-height: 1.22727;
+			&:after {
+				content: attr(data-text);
+				font-size: 40px;
+				@media #{$max-sm} {
+					font-size: 35px;
+				}
+			}
+			@media #{$max-md} {
+				font-size: 60px;
+			}
+			@media #{$max-sm} {
+				font-size: 50px;
+			}
+		}
+	}
+}

@@ -1,0 +1,71 @@
+/*--------------------------------------------------------------
+# Image Box
+--------------------------------------------------------------*/
+
+.pxl-image-box1 {
+    .pxl-item--image {
+        width: 36%;
+        margin-right: 30px;
+    }
+    .pxl-item--content {
+        position: relative;
+        width: 64%;
+    }
+    .pxl-item--title {
+        opacity: 0;
+        @extend .pxl-h4-size;
+    }
+    .pxl-item--list {
+        opacity: 0;
+        margin-bottom: 0;
+        pointer-events: none;
+        @extend .pxl-list-check;
+        @include transform(translateY(-15px));
+        @include transition(all 300ms ease);
+    }
+    .pxl-item--front {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        @include transform(translateY(-50%));
+        @include transition(all 300ms ease);
+        .pxl-item--title {
+            margin-bottom: 0;
+            opacity: 1;
+        }
+    }
+    .pxl-item--inner {
+        padding: 42px 40px;
+        @extend .pxl-item--flexnw;
+        @extend .pxl-border-sixth;
+        @media #{$max-md} {
+            padding: 20px;
+        }
+        @media #{$max-xs} {
+            flex-wrap: wrap;
+            .pxl-item--image {
+                width: 100%;
+                margin: 0 0 15px;
+            }
+            .pxl-item--content {
+                width: 100%;
+            }
+        }
+    }
+    &.active, .pxl-item--inner:hover {
+        border-color: $secondary_color;
+        .pxl-item--inner {
+            border-color: $secondary_color;
+        }
+        .pxl-item--title, .pxl-item--list {
+            opacity: 1;
+        }
+        .pxl-item--list {
+            @include transform(translateY(0));
+        }
+        .pxl-item--front {
+            opacity: 0;
+            @include transform(translateY(-100%));
+        }
+    }
+}

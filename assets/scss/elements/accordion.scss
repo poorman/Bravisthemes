@@ -1,0 +1,118 @@
+/*--------------------------------------------------------------
+# Accordion
+--------------------------------------------------------------*/
+
+.pxl-accordion {
+    .pxl-item--title {
+        margin-bottom: 0;
+        cursor: pointer;
+    }
+    .pxl-item--content {
+        display: none;
+    }
+    .pxl-icon--plus {
+        font-style: normal;
+    }
+}
+.pxl-accordion1 {
+    &.style1, &.style2 {
+        .pxl--item {
+            overflow: hidden;
+            .pxl-item--title {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                @extend .pxl-user-select;
+                @extend .pxl-h4-size;
+                @media #{$max-xs} {
+                    font-size: 24px;
+                }
+                span {
+                    padding-right: 35px;
+                }
+                i {
+                    @include transition(250ms all linear 0ms);
+                    position: absolute;
+                    right: 22px;
+                    color: $secondary_color;
+                    font-size: 20px;
+                    @media #{ $max-md } {
+                        right: 15px;
+                    }
+                    &:before {
+                        font-weight: 500;
+                    }
+                    &.fa-minus {
+                        position: absolute;
+                        opacity: 0;
+                    }
+                }
+            }
+            &.active {
+                .pxl-item--title {
+                    i {
+                        transform: rotateZ(180deg);
+                        color: #fff;
+                    }
+                }
+                .pxl-item--content {
+                    @include animation(pxl_fadeInUp 0.3s linear 1);
+                }
+            }
+        }
+    }
+    &.style1 {
+        .pxl--item {
+            + .pxl--item {
+                border-top: 1px solid #ECECEC;
+            }
+            .pxl-item--title {
+                padding: 17px 22px 17px 27px;
+                color: $secondary_color;
+            }
+            .pxl-item--content {
+                padding: 19px 0 30px 27px;
+                font-family: 'Nunito Sans';
+                font-style: normal;
+                font-weight: 600;
+                color: $third_color;
+                font-size: 14px;
+                line-height: 24px;
+                @media #{$max-xs} {
+
+                }
+            }
+            &.active {
+                .pxl-item--title {
+                    background-color: $primary_color;
+                    color: #fff;
+                }
+            }
+        }
+    }
+    &.style2 {
+        .pxl--item {
+            @extend .pxl-border-sixth;
+            + .pxl--item {
+                margin-top: 40px;
+            }
+            .pxl-item--title {
+                margin: 29px 30px 27px;
+                &:before, &:after {
+                    right: 0;
+                    background-color: $secondary_color;
+                }
+            }
+            .pxl-item--content {
+                padding: 0 30px 28px 30px;
+            }
+            &.active {
+                border-color: $secondary_color;
+                .pxl-item--title {
+                    margin: 29px 30px 7px;
+                }
+            }
+        }
+    }
+}

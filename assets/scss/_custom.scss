@@ -1,0 +1,52 @@
+// Grid
+//--------------------------------------------------
+.pxl-section-offset-left{
+    @media (min-width: 1280px){
+        &.pxl-container-width-container-1400{
+            padding-left: calc( (100% - 1200px)/2) !important;
+            &.pxl-section-gap-no{
+               padding-left: calc( (100% - 1200px)/2) !important;
+            }
+        }
+        &.pxl-container-width-container-1200{
+            padding-left: calc( (100% - 1200px)/2) !important;
+            &.pxl-section-gap-no{
+                padding-left: calc( (100% - 1200px)/2) !important;
+            }
+        }
+        &.pxl-container-width-container-925{
+            padding-left: calc( (100% - 925px)/2) !important;
+            &.pxl-section-gap-no{
+                padding-left: calc( (100% - 1200px)/2) !important;
+            }
+        }
+    }
+}
+.pxl-section-offset-right{
+    @media (min-width: 1280px){
+        &.pxl-container-width-container-1400{
+            padding-right: calc( (100% - 1200px)/2) !important;
+            &.pxl-section-gap-no{
+                padding-right: calc( (100% - 1200px)/2) !important;
+            }
+        }
+        &.pxl-container-width-container-1200{
+            padding-right: calc( (100% - 1200px)/2) !important;
+            &.pxl-section-gap-no{
+                padding-right: calc( (100% - 1200px)/2) !important;
+            }
+        }
+        &.pxl-container-width-container-925{
+            padding-right: calc( (100% - 925px)/2) !important;
+            &.pxl-section-gap-no{
+                padding-right: calc( (100% - 1200px)/2) !important;
+            }
+        }
+    }
+}
+
+.pxl-swiper-arrows{
+    @media (min-width: $xl_min){
+        left: calc((100vw - 1200px)/2) !important;
+    }
+}

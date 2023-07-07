@@ -1,0 +1,49 @@
+/*--------------------------------------------------------------
+# Progressbar
+--------------------------------------------------------------*/
+
+.pxl-progressbar-1 {
+    .pxl--item {
+        + .pxl--item {
+            margin-top: 16px;
+        }
+        .pxl--meta {
+            margin-bottom: 6px;
+            .pxl--title {
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 1.85714;
+                color: #00234B;
+            }
+        }
+        .pxl--holder {
+            background: #E1E9F4;
+            border-radius: 10px;
+            .pxl--progressbar {
+                position: relative;
+                width: 0;
+                height: 6px;
+                border-radius: 10px;
+                background-color: $primary_color;
+                @include transition(width 1.4s ease);
+            }
+            .pxl--percentage {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                top: -29px;
+                right: 0px;
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 1;
+                color: #00234B;
+                padding: 6px 8px 6px;
+                min-width: 48px;
+                background: transparent;
+                &:after {
+                    content: '%';
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,173 @@
+/*--------------------------------------------------------------
+# Meta Box
+--------------------------------------------------------------*/
+
+.pxl-meta-box1 {
+    text-align: center;
+    .pxl-item--inner {
+        padding: 80px 80px 90px;
+        background-color: #f6f9f5;
+        @media #{$max-xs} {
+            padding: 80px 25px 90px;
+        }
+    }
+    .pxl-item--title {
+        font-weight: 500;
+        margin-bottom: 31px;
+    }
+    &.style2 {
+        .pxl-item--inner {
+            border: 2px solid transparent;
+            background-color: $third_color;
+        }
+        .pxl-item--title {
+            color: #FFF;
+        }
+    }
+}
+.pxl-meta-box2 {
+    .pxl-item--inner {
+        display: flex;
+        align-items: center;
+    }
+    .pxl-item--image {
+        flex: none;
+        overflow: hidden;
+        + .pxl-item--content {
+            margin-left: 15px;
+        }
+        position: relative;
+        a {
+            &:before {
+                @extend .pxl-spill;
+                background: rgba(24, 38, 37, 0.8);
+                opacity: 0.8;
+                @include transition(0.3s ease-in-out);
+                opacity: 0;
+                z-index: 1;
+            }
+            &:after {
+                content: '\e90c';
+                font-family: 'Pxl Awesome';
+                font-weight: 400;
+                @extend .pxl-middle;
+                color: $fourth_color;
+                z-index: 2;
+                opacity: 0;
+                @include transform(translate(-50%, -100%));
+                @include transition(0.3s ease-in-out);
+            }
+        }
+        img {
+            @include transition(0.3s ease);
+        }
+        &:hover {
+            a:before {
+                opacity: 1;
+            }
+            a:after {
+                opacity: 1;
+                @include transform(translate(-50%, -50%));
+            }
+            img {
+                @include transform(scale(1.1));
+            }
+        }
+    }
+    .pxl-item--subtitle, .pxl-item--title {
+        @extend .pxl-text-sub-14;
+    }
+    .pxl-item--subtitle {
+        color: $primary_color;
+        margin-bottom: 2px;
+    }
+    .pxl-item--title {
+        font-size: 15px;
+        color: #FFF;
+        line-height: 1.3333;
+    }
+}
+
+.pxl-meta-box-grid1 {
+    .pxl-item--content {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .pxl-item--icon {
+        margin: 0 20px 0 0;
+        i {
+            color: $secondary_color;
+            font-size: 22px;
+        }
+        img {
+            max-height: 22px;
+        }
+    }
+    .pxl-item--title {
+        font-size: 24px;
+        margin-bottom: 0;
+    }
+}
+.pxl-meta-box-grid2 {
+    .pxl-item--inner {
+        padding: 40px 40px 45px;
+        @extend .pxl-border-sixth;
+        @media #{$max-xs} {
+            padding: 40px 30px 45px;
+        }
+    }
+    .pxl-item--icon {
+        margin-bottom: 39px;
+        @media #{$max-xs} {
+            margin-bottom: 29px;
+        }
+    }
+    .pxl-item--title {
+        margin-bottom: 13px;
+        @extend .pxl-h4-size;
+    }
+}
+
+.pxl-meta-box-carousel1 {
+    .pxl-item--inner, .pxl-item--content {
+        display: flex;
+        flex-direction: column;
+    }
+    .pxl-item--inner {
+        padding: 28px;
+        @extend .pxl-border-sixth;
+    }
+    .pxl-item--title {
+        margin-bottom: 20px;
+    }
+    .pxl-item--content {
+        margin-bottom: 30px;
+        a + a, span + span {
+            margin-top: 5px;
+        }
+        span {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            &:before {
+                content: '\e917';
+                font-family: 'Pxl Awesome';
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                line-height: 14px;
+                font-size: 7px;
+                margin-right: 10px;
+                text-align: center;
+                color: $fourth_color;
+                background-color: $primary_color;
+                flex: none;
+                @include border-radius(50%);
+            }
+        }
+    }
+    .pxl-item--image {
+        margin-bottom: 30px;
+    }
+}

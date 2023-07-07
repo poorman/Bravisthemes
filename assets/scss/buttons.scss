@@ -1,0 +1,240 @@
+button:not(.mfp-close, .rm-style-default, .search-submit, .wp-element-button, .mfp-arrow, .woosc-btn, .woosw-btn, .woosq-btn), .button {
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFF;
+    padding: 0 50px;
+    margin: 0 10px 10px 0;
+    line-height: 63px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    height: auto;
+    background-color: $secondary_color;
+    font-family: 'Nunito Sans';
+    @media #{$max-xs} {
+        padding: 0 25px;
+    }
+    &:hover, &:focus, &:active, &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active {
+        outline: medium none;
+        text-decoration: none;
+        background-color: $secondary_color;
+    }
+}
+.btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFF;
+    padding: 0 30px;
+    line-height: 60px;
+    cursor: pointer;
+    border: none;
+    background-color: $secondary_color;
+    height: auto;
+    font-family: 'Nunito Sans';
+    @media #{$max-xs} {
+        padding: 0 30px;
+    }
+    &.style-2, &.style-3 ,&.style-4 {
+        .pxl--btn-text {
+            display: flex;
+            &:before {
+                content: none;
+            }
+            span {        
+                display: block;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                font-style: normal;        
+                $i: 1;
+                @while $i < 20 {
+                    &:nth-child(#{$i}) {
+                        --d: #{$i / 20 + s};
+                    }
+                    $i: $i + 1;
+                }
+            }
+        }
+    }
+    &.style-2 {
+        &:hover {
+            .pxl--btn-text {
+                span {  
+                    animation: move .5s linear var(--d);
+                }
+            }
+        }
+    }    
+    &.style-3 {
+        &:hover {
+            .pxl--btn-text {
+                span {  
+                    animation: smoke 1s linear var(--d);
+                }
+            }
+        }
+    }
+    &.style-4 {
+        &:hover {
+            .pxl--btn-text {
+                span {  
+                    transform-origin: 50% 100%;
+                    animation: drive 1s linear var(--d);
+                }
+            }
+        }
+    }
+    &:hover, &:focus, &:active {
+        outline: medium none;
+        text-decoration: none;
+        color: #fff;
+    }
+}
+.btn-default {
+    margin: 0;
+    span {
+        position: relative;
+        -webkit-box-flex: 0;
+        -ms-flex: none;
+        flex: none;
+        z-index: 1;
+    }
+    &:hover, &:focus, &:active {
+        color: $secondary_color;
+        background-color: $primary_color;
+    }
+    &.style-dark {
+        color: $primary_color;
+        background-color: $primary_color;
+        &:after {
+            border-color: $primary_color;
+        }
+        &:hover, &:focus, &:active {
+            color: $primary_color;
+            background-color: transparent;
+        }
+    }
+}
+.pxl-btn-line {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+    padding-bottom: 4px;
+    color: $secondary_color;
+    font-family: 'Nunito Sans';
+    cursor: pointer;
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $secondary_color;
+        pointer-events: none;
+    }
+    &:hover:after {
+        @include transform(scaleX(-0.5));
+        @include transition(all 300ms ease);
+        -webkit-transition-delay: 1s;
+        -moz-transition-delay: 1s;
+        transition-delay: 1s;
+    }
+}
+.btn-style2 {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: $secondary_color;
+    line-height: 60px;
+    cursor: pointer;
+    background-color: transparent;
+    &.pxl-custom-transition {
+        @include transition(all 0.2s ease-out);
+    }
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border: 2px solid $secondary_color;
+        z-index: 1;
+        @include transition(inherit);
+    }
+    .top-bottom, .left-right {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        @include transition(inherit);
+        &:before, &:after {
+            content: '';
+            position: absolute;
+            background-color: $secondary_color;
+            @include transition(inherit);
+        }
+    }
+    .top-bottom {
+        &:before, &:after {
+            height: 2px;
+            width: 0;
+        }
+        &:before {
+            top: 0;
+            left: -15px;
+        }
+        &:after {
+            bottom: 0;
+            right: -15px;
+        }
+    }
+    .left-right {
+        &:before, &:after {
+            height: 0;
+            width: 2px;
+        }
+        &:before {
+            top: -15px;
+            right: 0;
+        }
+        &:after {
+            bottom: -15px;
+            left: 0;
+        }
+    }
+    &:hover {
+        letter-spacing: 0.03em;
+        .top-bottom {
+            &:before {
+                width: 100%;
+                left: 0;
+            }
+            &:after {
+                width: 100%;
+                right: 0;
+            }
+        }
+        .left-right {
+            &:before {
+                height: 100%;
+                top: 0;
+            }
+            &:after {
+                height: 100%;
+                bottom: 0;
+            }
+        }
+    }
+}

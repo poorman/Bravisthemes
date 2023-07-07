@@ -1,0 +1,172 @@
+// Default variables
+$font_size: 14px !default;
+$font_size_small: 12px !default;
+
+$input_border_radius: 0px !default;
+$input_height: 42px !default;
+$input_height_small: 36px !default;
+$dropdown_padding: 18px !default;
+
+$color_dark: #444 !default;
+$primary_dark: #000 !default;
+$color_light: #e5e5e5 !default;
+$color_lighter: #f6f6f6 !default;
+$arrow_color: #999 !default;
+
+// Style the dropdown
+.nice-select {
+  position: relative;
+  display: block;
+  font-family: inherit;
+  font-size: $font_size;
+  font-weight: 600;
+  line-height: 1.5;
+  width: 100%;
+  height: auto;
+  min-width: 100%;
+  padding: 11px 13px;
+  background-color: transparent;
+  float: left;
+  text-align: left;
+  outline: none;
+  clear: both;
+  cursor: pointer;
+  white-space: nowrap;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  @extend .pxl-border-sixth;
+  @include border-radius($input_border_radius);
+  @include user-select(none);
+  .current {
+    color: #00234B;
+    text-transform: capitalize;
+  }
+  &:active, &:focus {
+    border-color: $secondary_color;
+  }
+  // Arrow
+  &:after {
+    content: '\e916';
+    font-family: 'Pxl Awesome';
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    color: $secondary_color;
+    font-size: 12px;
+    font-weight: 500;
+    @include transform(translateY(-50%));
+  }
+
+  &.open {
+    @extend :active;
+    &:after {
+      @include transform(rotateX(180deg) translateY(-50%));
+      -webkit-transform-origin: 50% 0;
+      -ms-transform-origin: 50% 0;
+      transform-origin: 50% 0;
+    }
+    .list {
+      opacity: 1;
+      pointer-events: auto;
+      @include transform(scale(1) translateY(0));
+    }
+  }
+  &.disabled {
+    border-color: lighten($color_light, 2%);
+    color: $primary_dark;
+    pointer-events: none;
+    &:after {
+      border-color: lighten($arrow_color, 20%);
+    }
+  }
+
+  // Modifiers
+  &.wide {
+    width: 100%;
+    .list {
+      left: 0 !important;
+      right: 0 !important;
+    }
+  }
+  &.right {
+    float: right;
+    .list {
+      left: auto;
+      right: 0;
+    }
+  }
+  &.small {
+    font-size: $font_size_small;
+    height: $input_height_small;
+    line-height: $input_height_small - 2;
+    &:after {
+      height: 4px;
+      width: 4px;
+    }
+    .option {
+      line-height: $input_height_small - 2;
+      min-height: $input_height_small - 2;
+    }
+  }
+
+  // List and options
+  .list {
+    position: absolute;
+    width: calc(100% + 4px);
+    top: 100%;
+    left: -2px;
+    background-color: #FFF;
+    margin-top: 4px;
+    opacity: 0;
+    padding: 0;
+    pointer-events: none;
+    transform-origin: 50% 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    @extend .pxl-border-sixth;
+    @include border-radius($input_border_radius);
+    @include transform(scale(.75) translateY(-($input_height / 2)));
+    @include transition(all .2s cubic-bezier(0.5, 0, 0, 1.25), opacity .15s ease-out);
+    z-index: 9;
+    &:hover .option:not(:hover) {
+      background-color: transparent !important;
+    }
+  }
+  .option {
+    cursor: pointer;
+    font-weight: 400;
+    line-height: $input_height - 2;
+    list-style: none;
+    min-height: $input_height - 2;
+    outline: none;
+    padding-left: $dropdown_padding;
+    padding-right: $dropdown_padding + 11;
+    text-align: left;
+    @include transition(all 0.2s);
+    &:hover, &.focus, &.selected.focus {
+      color: $primary_color;
+      background-color: $color_lighter;
+    }
+    &.selected {
+      color: $secondary_color;
+      font-weight: 600;
+    }
+    &.disabled {
+      background-color: transparent;
+      color: $primary_dark;
+      cursor: default;
+    }
+  }
+}
+
+// Use display instead of opacity for IE <= 10
+.no-csspointerevents .nice-select {
+  .list {
+    display: none;
+  }
+  &.open {
+    .list {
+      display: block;
+    }
+  }
+}
